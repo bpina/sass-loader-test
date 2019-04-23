@@ -1,0 +1,236 @@
+$mdc-typography-styles-subtitle2: (font-style: italic);
+
+$mdc-theme-primary: rgb(80, 90, 138);
+$mdc-theme-on-primary: rgb(170, 98, 98);
+$mdc-primary-on-dark: rgb(121, 81, 81);
+$mdc-primary-on-light: rgba(0,0,0, 1);
+$mdc-theme-background: #f2f2f2;
+$mdc-theme-surface: rgba(75, 116, 102, 0.473);
+$mdc-theme-on-surface: rgba(0,0,0, 1);
+$mdc-theme-secondary: rgba(163, 254, 253, 1);
+$mdc-secondary-on-light: rgba(0,0,0, 1);
+$mdc-secondary-on-dark: rgba(255, 255, 255, 1);
+$mdc-theme-on-secondary: rgba(0,0,0, 1);
+$mdc-theme-on-surface: rgba(0, 0, 0, 1);
+
+
+@import "@material/button/mdc-button";
+@import "@material/card/mdc-card";
+@import "@material/dialog/mdc-dialog";
+@import "@material/elevation/mdc-elevation";
+@import "@material/floating-label/mdc-floating-label";
+@import "@material/layout-grid/mdc-layout-grid";
+@import "@material/linear-progress/mdc-linear-progress";
+@import "@material/list/mdc-list";
+@import "@material/menu/mdc-menu";
+@import "@material/menu-surface/mdc-menu-surface";
+@import "@material/select/mdc-select";
+@import "@material/select/icon/mdc-select-icon";
+@import "@material/snackbar/mdc-snackbar";
+@import "@material/textfield/mdc-text-field";
+@import "@material/theme/mdc-theme";
+@import "@material/typography/mdc-typography";
+
+// added complexity
+.customers-order-booking-bar {
+  background: mdc-theme-prop-value(primary);
+
+  &__grid {
+    min-height: 102px;
+  }
+
+  &__content {
+    column-gap: 8px;
+  }
+
+  &__progress-container {
+    min-height: 10px;
+  }
+
+  &__progress-bar {
+    @include mdc-linear-progress-bar-color(secondary);
+    @include mdc-linear-progress-buffer-color(rgba(0,173,175,1));
+    width: 100%;
+  }
+
+  &__input {
+    @include mdc-text-field-fill-color(rgba(255,255,255,.12));
+    @include mdc-text-field-bottom-line-color(primary);
+    @include mdc-text-field-hover-bottom-line-color(secondary);
+    @include mdc-text-field-line-ripple-color(secondary);
+    @include mdc-text-field-ink-color(on-primary);
+    @include mdc-text-field-label-color(on-primary);
+    @include mdc-text-field-caret-color(on-primary);
+    @include mdc-text-field-icon-color(on-primary);
+    width: 100%;
+
+    &.mdc-text-field--disabled {
+      background: rgba(255,255,255,.12) !important;
+    }
+  }
+
+  &__select {    
+    @include mdc-select-container-fill-color(rgba(255,255,255,.12));
+    @include mdc-select-focused-bottom-line-color(secondary);
+    @include mdc-select-bottom-line-color(primary);
+    @include mdc-select-hover-bottom-line-color(secondary);
+    @include mdc-select-ink-color(on-primary);
+    @include mdc-select-label-color(on-primary);
+    @include mdc-select-focused-label-color(on-primary);
+    @include mdc-select-icon-color(on-primary);
+    width: 100%;
+
+    .mdc-floating-label {
+      line-height: 1rem !important;
+      top: unset;
+      bottom: 20px;
+      overflow: visible;
+    }
+
+    & > .mdc-select__native-control {
+      border-bottom: 1px solid mdc-theme-prop-value(primary) !important;
+    }
+
+    &.mdc-select--disabled {
+      background: rgba(255,255,255,.12) !important;
+    }
+    &.mdc-select--disabled > .mdc-select__native-control {
+      border-bottom: 1px solid mdc-theme-prop-value(primary) !important;
+    }
+  }
+
+  &__icon {
+    color: mui-color("white");
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  &__input-group {
+    @include mdc-layout-grid(desktop, 0);
+    padding: 0;
+  }
+
+  &__input-group-icon-cell {
+    display: none;
+    visibility: hidden;
+  }
+
+  &__button {
+    @include mdc-button-container-fill-color('secondary');
+    @include mdc-button-ink-color('on-secondary');
+    width: 100%;
+    height: 56px;
+    text-transform: none;
+    font-family: "Polaris";
+    font-style: italic;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &.mdc-button--raised:disabled {
+      background: rgba(255,255,255,.24) !important;
+    }
+  }
+}
+
+@media (min-width: mdc-layout-grid-breakpoint-min(desktop)) {
+  .customers-order-booking-bar {
+    &__input-group-icon-cell {
+      @include mdc-layout-grid-cell(desktop, 2, 0px);
+      visibility: visible;
+      display: block;
+      text-align: center;
+    }
+
+    &__grid {
+      padding-top: 20px;
+    }
+  }
+}
+
+.customers-location-dialog {
+  &__input-container {
+    position: relative;
+    padding: 16px 16px;
+  }
+
+  &__input-container-highlight {
+    background: mdc-theme-prop-value(primary);
+    opacity: .1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__container {
+    &--dialog {
+      padding: 0;
+      @include mdc-elevation(4, on-surface);
+    }
+  }
+
+  &__input {
+    opacity: 1;
+    width: 100%;
+    @include mdc-text-field-outline-color(on-primary);
+    @include mdc-text-field-fill-color(on-primary);
+    @include mdc-text-field-bottom-line-color(on-primary);
+    border-radius: 4px;
+
+    &.mdc-ripple-upgraded--background-focused {
+      @include mdc-states-base-color(on-primary);
+      @include mdc-states-hover-opacity(0);
+      @include mdc-states-focus-opacity(0, 'false');
+      @include mdc-states-press-opacity(0);
+
+    }
+  }
+
+  &__header-link {
+    cursor: pointer;
+    text-align: right;
+    color: mdc-theme-prop-value(on-surface);
+  }
+
+  &__header-icon {
+    line-height: unset;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 16px;
+  }
+
+  &__header-text {
+    line-height: unset;
+  }
+
+  &__list {
+    padding: 0;
+
+    &--suggestions {
+      border-bottom: 16px solid rgba(50, 72, 179, .1);
+    }
+  }
+}
+
+html, body {
+  font-size: 16px;
+}
+
+@media (min-width: mdc-layout-grid-breakpoint-min(desktop)) {
+  .customers-location-dialog {
+    &__container {
+      &--dialog {
+        top: 170px;
+        width: 480px;
+      }
+    }
+  }
+}
